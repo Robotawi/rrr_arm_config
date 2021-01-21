@@ -7,7 +7,7 @@ We start here with a xacro model that is well formatted, and parsed for visualiz
 To use this config package, clone it and the package of the rrr_arm (which contains the model) in your ROS `workspace/src` directory as follows
 
 ```
-https://github.com/Robotawi/rrr_arm_config.git
+git clone https://github.com/Robotawi/rrr_arm_config.git
 git clone https://github.com/Robotawi/rrr-arm.git
 ```
 
@@ -17,7 +17,10 @@ roslaunch rrr_arm rrr_arm_bringup_moveit.launch
 ```
 The ultimate goal for the two packages together is let MoveIt be interfaced with Gazebo. This step makes the transition to the real robot very smooth. 
 
-I will explain how this MoveIt configuration package is developed and how the interface with gazebo is carried out. To produced the config package, MoveIt setup assistant is used and its input is the xacro or urdf model of the robot. 
+I will explain how this MoveIt configuration package is developed and how the interface with gazebo is carried out.
+
+## 1. How to make the MoveIt configuration package?
+MoveIt setup assistant is used for this purpose and its input is the xacro or urdf model of the robot. 
 
 We can start MoveIt setup assistant as follows
 ```
@@ -42,3 +45,37 @@ The steps according to the order of the tabs in the setup assistant GUI are as f
 9. Generating the configuration files is the last step. It creates a ROS package for the robot to be used for the motion planning and all the interesting stuff. There is a convention to name the package as `"robot_"config`. It is to be placed in the src directory of your catkin workspace to start using the robot. 
 10. Exit the setup assistant.
 
+**I will include some screenshots from the previous steps to make easier to follow**
+
+## Load the URDF or Xacro file of your robot
+
+![](./img/moveit_assistant1.png)
+## Define the arm planning group (with kinematic chain option)
+![](./img/moveit_assistant2.png)
+## Define the gripper planning group (with joints and links)
+![](./img/moveit_assistant3.png)
+
+![](./img/moveit_assistant4.png)
+
+![](./img/moveit_assistant5.png)
+
+## Make sure the arm/gripper are well done with the chain for the arm, and links/joints for the gripper.
+![](./img/moveit_assistant6.png)
+
+## Define the end effector by  attaching the gripper move_group to it. 
+![](./img/moveit_assistant7.png)
+
+
+**Examples of the planned motion (start pose is green, and goal pose is orange).**
+
+Notice this is in Rviz, we can start it with the following command
+```
+roslaunch rrr_arm_config demo.launch 
+```
+
+![](./img/moveit_plan_motion1.gif)
+
+## With obstacle avoidance
+![](./img/moveit_plan_motion6.gif)
+
+![](./img/moveit_plan_motion9.gif)
