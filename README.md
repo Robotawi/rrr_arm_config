@@ -11,11 +11,21 @@ git clone https://github.com/Robotawi/rrr_arm_config.git
 git clone https://github.com/Robotawi/rrr-arm.git
 ```
 
-Then, build the workspace and run it as follows
+After cloning this package, and building the workspace, we can MoveIt motion planning in Rviz with the following command
 ```
-roslaunch rrr_arm rrr_arm_bringup_moveit.launch 
+roslaunch rrr_arm_config demo.launch 
 ```
-The ultimate goal for the two packages together is let MoveIt be interfaced with Gazebo. This step makes the transition to the real robot very smooth. 
+
+**Examples of the planned motion (start pose is green, and goal pose is orange).**
+
+
+![](./img/moveit_plan_motion1.gif)
+
+## With obstacle avoidance
+![](./img/moveit_plan_motion6.gif)
+
+![](./img/moveit_plan_motion9.gif)
+
 
 I will explain how this MoveIt configuration package is developed and how the interface with gazebo is carried out.
 
@@ -48,6 +58,7 @@ The steps according to the order of the tabs in the setup assistant GUI are as f
 ___
 <details><summary>CLICK here to see screenshots of the previous steps to make easier to follow</summary>
 <p>
+
 ## Load the URDF or Xacro file of your robot
 
 ![](./img/moveit_assistant1.png)
@@ -70,20 +81,10 @@ ___
 
 ___
 
-
-**Examples of the planned motion (start pose is green, and goal pose is orange).**
-
-After cloning this package, we can MoveIt motion planning in Rviz with the following command
-```
-roslaunch rrr_arm_config demo.launch 
-```
-
-![](./img/moveit_plan_motion1.gif)
-
-## With obstacle avoidance
-![](./img/moveit_plan_motion6.gif)
-
-![](./img/moveit_plan_motion9.gif)
-
-
 ## 2. How to interface MoveIt with Gazebo?
+
+The ultimate goal for the two packages `rrr_arm` and `rrr_arm_config` is to interface MoveIt with Gazebo simulator. This step makes the transition to the real robot very smooth. Using the following command, we can launch both MoveIt in Rviz, and execute the planned motion in Gazebo simulator.
+```
+roslaunch rrr_arm rrr_arm_bringup_moveit.launch 
+```
+
