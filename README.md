@@ -45,8 +45,9 @@ The steps according to the order of the tabs in the setup assistant GUI are as f
 9. Generating the configuration files is the last step. It creates a ROS package for the robot to be used for the motion planning and all the interesting stuff. There is a convention to name the package as `"robot_"config`. It is to be placed in the src directory of your catkin workspace to start using the robot. 
 10. Exit the setup assistant.
 
-**I will include some screenshots from the previous steps to make easier to follow**
-
+___
+<details><summary>CLICK here to see screenshots of the previous steps to make easier to follow</summary>
+<p>
 ## Load the URDF or Xacro file of your robot
 
 ![](./img/moveit_assistant1.png)
@@ -64,11 +65,15 @@ The steps according to the order of the tabs in the setup assistant GUI are as f
 
 ## Define the end effector by  attaching the gripper move_group to it. 
 ![](./img/moveit_assistant7.png)
+</p>
+</details>
+
+___
 
 
 **Examples of the planned motion (start pose is green, and goal pose is orange).**
 
-Notice this is in Rviz, we can start it with the following command
+After cloning this package, we can MoveIt motion planning in Rviz with the following command
 ```
 roslaunch rrr_arm_config demo.launch 
 ```
@@ -79,3 +84,6 @@ roslaunch rrr_arm_config demo.launch
 ![](./img/moveit_plan_motion6.gif)
 
 ![](./img/moveit_plan_motion9.gif)
+
+
+## 2. How to interface MoveIt with Gazebo?
