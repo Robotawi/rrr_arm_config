@@ -83,6 +83,7 @@ roslaunch rrr_arm_config demo.launch
 ## With obstacle avoidance
 ![](./img/moveit_plan_motion6.gif)
 
+
 ![](./img/moveit_plan_motion9.gif)
 
 
