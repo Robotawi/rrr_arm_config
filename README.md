@@ -88,3 +88,5 @@ The ultimate goal for the two packages `rrr_arm` and `rrr_arm_config` is to inte
 roslaunch rrr_arm rrr_arm_bringup_moveit.launch 
 ```
 
+## How to configure the arm joints controllers? 
+A major part of the interface depends on getting the arms controllers correctly set. Unfortunately, this is not ready when the arm config files are exported from MoveIt's setup assistant. This [repo](https://github.com/Robotawi/gazebo-controllers-config) explains how to prepare gazebo controllers in a systematic way. 
