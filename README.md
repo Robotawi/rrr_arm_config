@@ -1,6 +1,14 @@
 # MoveIt configuration package for RRR-robot-arm
 MoveIt config package for 3 DOF Revolute-Revolute-Revolute robot arm built from scratch with steps in [this repository](https://github.com/Robotawi/rrr-arm). The aim of this package is to explain to fellow roboticists about the flow of developing MoveIt configuration packages for their robot arms. 
 
+In the previous step [here](), we were able to control each arm joint in Gazebo using the ros_controllers. We moved them by publishing on the control command topics as follows
+```
+rostopic pub /rrr_arm/joint2_position_controller/command std_msgs/Float64 "data: 1" 
+```
+It is so difficult to image palnning arms motions in this manner. Moveit solves this problem for us. 
+
+
+
 We start here with a xacro model that is well formatted, and parsed for visualization in Rviz smoothly. In the next step, a motion planning capability is added to the robot package. 
 
 
@@ -30,7 +38,9 @@ roslaunch rrr_arm_config demo.launch
 I will explain how this MoveIt configuration package is developed and how the interface with gazebo is carried out.
 
 ## 1. How to make the MoveIt configuration package?
-MoveIt setup assistant is used for this purpose and its input is the xacro or urdf model of the robot. 
+
+MoveIt setup assistant generates SRDF, configuration files, launch files, and scripts generated from the
+robot URDF model, which is required to configure the move_group node. It takes as input the xacro or urdf model of the robot. 
 
 We can start MoveIt setup assistant as follows
 ```
